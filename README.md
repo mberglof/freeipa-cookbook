@@ -1,0 +1,4 @@
+freeipa-cookbook
+================
+
+FreeIPA cookbook
