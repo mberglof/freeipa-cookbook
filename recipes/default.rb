@@ -13,7 +13,8 @@ script "install freeipa" do
   interpreter "bash"
   user "root"
   group "root"
+  cwd "/tmp"
   code <<-EOH
-  ipa-server-install -U --selfsign -a default["freeipa"]["ipa_admin_password"] --hostname=default["freeipa"]["hostname"] -n default["freeipa"]["domain"] -p default["freeipa"]["dir_manager_password"] -r default["freeipa"]["realm_name"]
+  ipa-server-install -U -a default["freeipa"]["ipa_admin_password"] --hostname=default["freeipa"]["hostname"] -n default["freeipa"]["domain"] -p default["freeipa"]["dir_manager_password"] -r default["freeipa"]["realm_name"]
   EOH
 end
