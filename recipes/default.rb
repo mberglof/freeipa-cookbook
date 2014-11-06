@@ -5,17 +5,19 @@
 # Copyright 2014, Webhosting.coop
 #
 #
-ipa_admin_password = default["freeipa"]["ipa_admin_password"]
-hostname = default["freeipa"]["hostname"] 
-domain = default["freeipa"]["domain"] 
-dir_manager_password = default["freeipa"]["dir_manager_password"] 
-realm_name = default["freeipa"]["realm_name"]
+ipa_admin_password = node.default["freeipa"]["ipa_admin_password"]
+hostname = node.default["freeipa"]["hostname"] 
+domain = node.default["freeipa"]["domain"] 
+dir_manager_password = node.default["freeipa"]["dir_manager_password"] 
+realm_name = node.default["freeipa"]["realm_name"]
 
 hostsfile_entry node['ipaddress'] do
-    hostname  default["freeipa"]["hostname"]
+    hostname  node.default["freeipa"]["hostname"]
     action    :create_if_missing
 end
 package "freeipa-server" do
+  retries 3
+  retry_delay 10
   action [:install]
 end
 
