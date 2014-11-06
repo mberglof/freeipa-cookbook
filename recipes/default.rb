@@ -13,7 +13,8 @@ realm_name = node.default["freeipa"]["realm_name"]
 
 hostsfile_entry node['ipaddress'] do
     hostname  node.default["freeipa"]["hostname"]
-    action    :create_if_missing
+    comment   'added by freeipa recipe'
+    action    :append
 end
 package "freeipa-server" do
   retries 3
