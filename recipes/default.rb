@@ -5,14 +5,14 @@
 # Copyright 2014, Webhosting.coop
 #
 #
-ipa_admin_password = node.default["freeipa"]["ipa_admin_password"]
-hostname = node.default["freeipa"]["hostname"] 
-domain = node.default["freeipa"]["domain"] 
-dir_manager_password = node.default["freeipa"]["dir_manager_password"] 
-realm_name = node.default["freeipa"]["realm_name"]
+ipa_admin_password = node["freeipa"]["ipa_admin_password"]
+hostname = node["freeipa"]["hostname"] 
+domain = node["freeipa"]["domain"] 
+dir_manager_password = node["freeipa"]["dir_manager_password"] 
+realm_name = node["freeipa"]["realm_name"]
 
 hostsfile_entry node['ipaddress'] do
-    hostname  node.default["freeipa"]["hostname"]
+    hostname  node["freeipa"]["hostname"]
     comment   'added by freeipa recipe'
     retries 3
     retry_delay 15
