@@ -20,6 +20,7 @@ hostsfile_entry node['ipaddress'] do
 end
 package "freeipa-server" do
   retries 3
+  timeout 1800
   retry_delay 10
   action [:install]
 end
