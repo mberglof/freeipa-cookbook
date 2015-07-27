@@ -6,6 +6,7 @@ This cookbook makes a freeIPA server
 Requirements
 ------------
 fedora20
+CentOS 6.x
 
 Attributes
 ----------
