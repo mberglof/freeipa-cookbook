@@ -11,6 +11,12 @@ domain = node["freeipa"]["domain"]
 dir_manager_password = node["freeipa"]["dir_manager_password"] 
 realm_name = node["freeipa"]["realm_name"]
 
+if platform?("centos")
+  ipa_package = "ipa-server"
+elsif platform?("fedora")
+  ipa_package = "freeipa-server"
+end
+
 hostsfile_entry node['ipaddress'] do
     hostname  node["freeipa"]["hostname"]
     comment   'added by freeipa recipe'
@@ -18,7 +24,7 @@ hostsfile_entry node['ipaddress'] do
     retry_delay 15
     action    :append
 end
-package "freeipa-server" do
+package "#{ipa_package}" do
   retries 3
   timeout 1800
   retry_delay 10
