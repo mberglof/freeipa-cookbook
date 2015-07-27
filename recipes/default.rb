@@ -34,13 +34,6 @@ hostsfile_entry node['ipaddress'] do
     action    :append
 end
 
-package "selinux-policy" do
-  retries 3
-  timeout 1800
-  retry_delay 10
-  action [:upgrade]
-end
-
 package "#{ipa_package}" do
   retries 3
   timeout 1800
